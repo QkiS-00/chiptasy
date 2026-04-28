@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chiptasy — Реєстрація</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+    <div class="auth-container">
+
+        <div class="auth-image">
+            <img src="img/auth-bg.jpg" alt="Chiptasy">
+        </div>
+
+        <div class="auth-form">
+            <h1>Створити акаунт</h1>
+            <p>Вже маєте обліковий запис? <a href="login.html">Увійти</a></p>
+
+            <input type="text" id="username" placeholder="Нік / ім'я / псевдонім">
+            <input type="email" id="email" placeholder="Email">
+            <input type="password" id="password" placeholder="Пароль">
+            <input type="password" id="confirmPassword" placeholder="Повторити пароль">
+
+            <p id="error-msg" class="error-msg"></p>
+
+            <button onclick="register()">Створити</button>
+        </div>
+
+    </div>
+
+    <script src="js/auth.js"></script>
+</body>
+</html>
