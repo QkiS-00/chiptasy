@@ -28,4 +28,6 @@ function register() {
   };
 
   localStorage.setItem('user', JSON.stringify(user));
+  errorMsg.style.color = '4ade80';
+  errorMsg.textContent = 'Акаунт успішно створено!';
 }
