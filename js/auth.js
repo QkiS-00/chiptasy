@@ -35,3 +35,29 @@ function register() {
   }, 1500);
 
 }
+
+function login() {
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value;
+  const errorMsg = document.getElementById('error-msg');
+
+  if (!email || !password) {
+    errorMsg.textContent = 'Заповніть усі поля';
+    return;
+  }
+
+  const savedUser = JSON.parse(localStorage.getItem('user'));
+
+  if (!savedUser || savedUser.email !== email || savedUser.password !== password) {
+    errorMsg.textContent = 'Невірний email або пароль';
+    return;
+  }
+
+  errorMsg.style.color = '#4ade80';
+  errorMsg.textContent = 'Вхід успішний!';
+
+  setTimeout(() => {
+    window.location.href = 'index.html';
+  }, 1500);
+  
+}
