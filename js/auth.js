@@ -21,4 +21,11 @@ function register() {
   }
 
   errorMsg.textContent = '';
+  const user = {
+    username: username,
+    email: email,
+    password: password
+  };
+
+  localStorage.setItem('user', JSON.stringify(user));
 }
