@@ -23,9 +23,21 @@
         </div>
     </header>
 
-    <!-- Список треків -->
+    <!-- Герой банер -->
+    <section class="hero">
+        <div class="hero-text">
+            <h1>ТВІЙ БІТ<br>ТВОЯ ПРИГОДА</h1>
+            <p>ЗАВАНТАЖУЙ, СЛУХАЙ, ПРОДАВАЙ</p>
+            <div class="hero-buttons">
+                <button class="btn-primary">Слухати біти</button>
+                <button class="btn-secondary">Завантажити біт</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ТОП-5 треків -->
     <main class="main">
-        <h2>🎵 Всі треки</h2>
+        <h2>ТОП-5 місяця 🎵</h2>
         <div id="track-list" class="track-list"></div>
     </main>
 
@@ -40,8 +52,10 @@
             <button onclick="nextTrack()">⏭</button>
         </div>
         <audio id="audio"></audio>
-        <input type="range" id="progress" value="0" max="100" oninput="setProgress()">
-        <span id="current-time">0:00</span>
+        <div class="player-progress">
+            <span id="current-time">0:00</span>
+            <input type="range" id="progress" value="0" max="100" oninput="setProgress()">
+        </div>
     </div>
 
     <script src="js/auth.js"></script>
