@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chiptasy — Головна</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/player.css">
+</head>
+<body>
+
+    <!-- Шапка -->
+    <header class="header">
+        <div class="logo">🎵 Chiptasy</div>
+        <nav>
+            <a href="index.html">Головна</a>
+            <a href="favorites.html">Обране</a>
+        </nav>
+        <div class="header-right">
+            <input type="text" id="searchInput" placeholder="Пошук треків..." oninput="search()">
+            <span id="username-display"></span>
+            <button onclick="logout()">Вийти</button>
+        </div>
+    </header>
+
+    <!-- Список треків -->
+    <main class="main">
+        <h2>🎵 Всі треки</h2>
+        <div id="track-list" class="track-list"></div>
+    </main>
+
+    <!-- Плеєр внизу -->
+    <div class="player" id="player">
+        <div class="player-info">
+            <span id="player-title">Оберіть трек</span>
+        </div>
+        <div class="player-controls">
+            <button onclick="prevTrack()">⏮</button>
+            <button onclick="togglePlay()">▶</button>
+            <button onclick="nextTrack()">⏭</button>
+        </div>
+        <audio id="audio"></audio>
+        <input type="range" id="progress" value="0" max="100" oninput="setProgress()">
+        <span id="current-time">0:00</span>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/search.js"></script>
+</body>
+</html>

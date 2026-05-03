@@ -1,0 +1,138 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    padding-bottom: 100px;
+}
+
+/* Шапка */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 32px;
+    background-color: #1e1e2e;
+    border-bottom: 1px solid #333;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #a855f7;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    margin-right: 20px;
+    font-size: 15px;
+}
+
+nav a:hover {
+    color: #a855f7;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-right input {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    background-color: #2a2a3e;
+    color: #ffffff;
+    outline: none;
+    width: 220px;
+}
+
+.header-right input:focus {
+    border-color: #a855f7;
+}
+
+.header-right button {
+    padding: 8px 16px;
+    background-color: #a855f7;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.header-right button:hover {
+    background-color: #9333ea;
+}
+
+/* Головна */
+.main {
+    padding: 32px;
+}
+
+.main h2 {
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+
+/* Список треків */
+.track-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.track-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1e1e2e;
+    padding: 14px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.track-item:hover {
+    background-color: #2a2a3e;
+}
+
+.track-item.active {
+    border-left: 4px solid #a855f7;
+}
+
+.track-name {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.track-artist {
+    font-size: 13px;
+    color: #aaaaaa;
+    margin-top: 4px;
+}
+
+.track-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.like-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #aaaaaa;
+    transition: color 0.2s;
+}
+
+.like-btn.liked {
+    color: #a855f7;
+}
