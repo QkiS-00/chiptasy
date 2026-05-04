@@ -29,3 +29,6 @@ beats.forEach(beat => {
   `;
 });
 
+document.querySelector('.btn-add').addEventListener('click', () => {
+  alert('Функція додавання треку буде додана пізніше');
+});
