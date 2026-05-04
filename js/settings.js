@@ -31,3 +31,16 @@ if (savedPhoto) {
 
 document.getElementById('fullname').value = user.username || '';
 document.getElementById('email').value = user.email || '';
+
+function checkPassword() {
+  const currentPassword = document.getElementById('current-password').value;
+  const settingsMsg = document.getElementById('settings-msg');
+
+  if (currentPassword !== user.password) {
+    settingsMsg.style.color = '#f87171';
+    settingsMsg.textContent = 'Невірний поточний пароль';
+    return false;
+  }
+
+  return true;
+}
