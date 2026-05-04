@@ -3,13 +3,15 @@ function loadFavorites() {
     const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
 
     if (favorites.length === 0) {
-        favoritesList.innerHTML = `
-            <div class="empty-msg">
-                <p>😔 У вас ще немає обраних треків</p>
-                <span>Поставте ❤️ на треках які вам подобаються</span>
-                <a href="index.html">Перейти до треків</a>
-            </div>
-        `;
+      favoritesList.innerHTML = `
+    <div class="empty-msg">
+        <div class="empty-icon">🎵</div>
+        <p>У вас ще немає обраних треків</p>
+        <span>Поставте ❤️ на треках які вам подобаються</span>
+        <a href="index.html">Перейти до треків</a>
+    </div>
+`;
+        
         return;
     }
 

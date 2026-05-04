@@ -267,18 +267,18 @@ nav a:hover { color: #a855f7; }
     color: #aaaaaa;
     margin-bottom: 24px;
 }
-
 .empty-msg a {
     display: inline-block;
     padding: 12px 28px;
     background-color: #a855f7;
-    color: white;
+    color: #ffffff;
     text-decoration: none;
     border-radius: 8px;
     font-size: 15px;
     font-weight: bold;
     transition: background 0.2s;
 }
+
 
 .empty-msg a:hover {
     background-color: #9333ea;
