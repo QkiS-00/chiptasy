@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chiptasy — Кабінет</title>
+    <link rel="stylesheet" href="css/cabinet.css">
+</head>
+<body>
+
+    <div class="cabinet-container">
+
+        <div class="sidebar">
+            <button class="btn-add">Додати трек +</button>
+            <button class="btn-settings" onclick="window.location.href='settings.html'">⚙ Налаштування</button>
+        </div>
+
+        <div class="main">
+
+            <div class="profile">
+                <div class="profile-photo">ФОТО</div>
+                <div class="profile-info">
+                    <h2 id="profile-name">Нікнейм</h2>
+                    <p>годі сидіти треба робити</p>
+                </div>
+            </div>
+
+            <h3>Статистика</h3>
+            <div class="stats">
+                <div class="stat-card">📊 <span>6000 грн</span><p>Дохід</p></div>
+                <div class="stat-card">✅ <span>64%</span><p>Продажі</p></div>
+                <div class="stat-card">🤍 <span>101</span><p>Зберігань</p></div>
+                <div class="stat-card">👁 <span>80%</span><p>Прослуховувань</p></div>
+            </div>
+
+            <h3>Ваші біти</h3>
+            <div class="beats-grid" id="beats-grid"></div>
+
+        </div>
+
+    </div>
+
+    <script src="js/cabinet.js"></script>
+</body>
+</html>
