@@ -6,6 +6,7 @@ function loadFavorites() {
         favoritesList.innerHTML = `
             <div class="empty-msg">
                 <p>😔 У вас ще немає обраних треків</p>
+                <span>Поставте ❤️ на треках які вам подобаються</span>
                 <a href="index.html">Перейти до треків</a>
             </div>
         `;

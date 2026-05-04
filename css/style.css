@@ -216,3 +216,70 @@ nav a:hover { color: #a855f7; }
     color: #a855f7;
     font-size: 14px;
 }
+.favorites-hero {
+    background: linear-gradient(
+        to right,
+        #0f0f1a 40%,
+        rgba(15, 15, 26, 0.3)
+    ),
+    url('../img/hero-bg.png') center/cover no-repeat;
+    padding: 50px 32px;
+    border-bottom: 2px solid #a855f7;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.favorites-hero h1 {
+    font-size: 42px;
+    font-weight: 900;
+    color: #ffffff;
+    text-shadow: 0 0 30px rgba(168, 85, 247, 0.5);
+}
+
+.favorites-hero p {
+    color: #aaaaaa;
+    font-size: 15px;
+    margin-top: 8px;
+}
+
+/* Порожній стан */
+.empty-msg {
+    text-align: center;
+    padding: 80px 60px;
+    color: #aaaaaa;
+}
+
+.empty-msg .empty-icon {
+    font-size: 64px;
+    margin-bottom: 20px;
+}
+
+.empty-msg p {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.empty-msg span {
+    display: block;
+    font-size: 14px;
+    color: #aaaaaa;
+    margin-bottom: 24px;
+}
+
+.empty-msg a {
+    display: inline-block;
+    padding: 12px 28px;
+    background-color: #a855f7;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.empty-msg a:hover {
+    background-color: #9333ea;
+}
