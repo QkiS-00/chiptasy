@@ -44,3 +44,29 @@ function checkPassword() {
 
   return true;
 }
+
+function saveSettings() {
+  const settingsMsg = document.getElementById('settings-msg');
+  const newPassword = document.getElementById('new-password').value;
+  const repeatPassword = document.getElementById('repeat-password').value;
+
+  if (!checkPassword()) return;
+
+  if (newPassword && newPassword !== repeatPassword) {
+    settingsMsg.style.color = '#f87171';
+    settingsMsg.textContent = 'Нові паролі не збігаються';
+    return;
+  }
+
+  user.username = document.getElementById('fullname').value;
+  user.email = document.getElementById('email').value;
+
+  if (newPassword) {
+    user.password = newPassword;
+  }
+
+  localStorage.setItem('user', JSON.stringify(user));
+
+  settingsMsg.style.color = '#4ade80';
+  settingsMsg.textContent = 'Дані успішно оновлено!';
+}
