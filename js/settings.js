@@ -28,3 +28,6 @@ if (savedPhoto) {
   document.getElementById('photo-preview-2').style.backgroundImage = `url(${savedPhoto})`;
   document.getElementById('photo-preview-2').style.backgroundSize = 'cover';
 }
+
+document.getElementById('fullname').value = user.username || '';
+document.getElementById('email').value = user.email || '';
