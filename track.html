@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chiptasy — Трек</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/player.css">
+    <link rel="stylesheet" href="css/track.css">
+</head>
+<body>
+
+
+    <header class="header">
+        <div class="logo">🎵 Chiptasy</div>
+        <nav>
+            <a href="index.html">Головна</a>
+            <a href="favorites.html">Обране</a>
+            <a href="cabinet.html">Кабінет</a>
+        </nav>
+        <div class="header-right">
+            <span id="username-display"></span>
+            <button onclick="logout()">Вийти</button>
+        </div>
+    </header>
+
+
+    <main class="main">
+        <button class="btn-back" onclick="window.history.back()">← Назад</button>
+
+        <div class="track-page">
+
+            <div class="track-cover" id="track-cover"></div>
+
+
+            <div class="track-info-block">
+                <h1 id="track-title">Назва треку</h1>
+                <p id="track-artist" class="track-artist-name">Виконавець</p>
+
+                <div class="track-tags">
+                    <span class="tag" id="track-genre">Жанр</span>
+                </div>
+
+                <!-- Кнопки -->
+                <div class="track-action-buttons">
+                    <button class="btn-play-big" onclick="playCurrentTrack()">
+                        ▶ Слухати
+                    </button>
+                    <button class="btn-like-big" id="like-btn" onclick="toggleLikeTrack()">
+                        🤍 В обране
+                    </button>
+                </div>
+
+            
+                <div class="track-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Тривалість</span>
+                        <span class="detail-value" id="track-duration">—</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Жанр</span>
+                        <span class="detail-value" id="track-genre-detail">—</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Виконавець</span>
+                        <span class="detail-value" id="track-artist-detail">—</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!Плеєр >
+    <div class="player">
+        <div class="player-info">
+            <span id="player-title">Оберіть трек</span>
+        </div>
+        <div class="player-controls">
+            <button onclick="prevTrack()">⏮</button>
+            <button onclick="togglePlay()">▶</button>
+            <button onclick="nextTrack()">⏭</button>
+        </div>
+        <audio id="audio"></audio>
+        <div class="player-progress">
+            <span id="current-time">0:00</span>
+            <input type="range" id="progress" value="0" max="100" oninput="setProgress()">
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/track.js"></script>
+</body>
+</html>
