@@ -240,7 +240,7 @@ nav a:hover { color: #a855f7; }
 .favorites-hero p {
     color: #aaaaaa;
     font-size: 15px;
-    margin-top: 8px;
+    margin-top: 8px;    
 }
 
 /* Порожній стан */
@@ -284,3 +284,100 @@ nav a:hover { color: #a855f7; }
     background-color: #9333ea;
 }
     
+/* Світла тема */
+body.light {
+    background-color: #f5f5f5;
+    color: #121212;
+}
+
+body.light .header {
+    background-color: #ffffff;
+    border-bottom: 1px solid #dddddd;
+}
+
+body.light .track-item {
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+}
+
+body.light .track-item:hover {
+    background-color: #f0f0f0;
+}
+
+body.light .track-item.active {
+    background-color: #ede9fe;
+}
+
+body.light .track-name {
+    color: #121212;
+}
+
+body.light .track-artist {
+    color: #555555;
+}
+
+body.light .hero {
+    background: linear-gradient(
+        to right,
+        #f5f5f5 40%,
+        rgba(245, 245, 245, 0.3)
+    ),
+    url('../img/hero-bg.png') center/cover no-repeat;
+}
+
+body.light .hero-text h1 {
+    color: #121212;
+    text-shadow: none;
+}
+
+body.light .player {
+    background-color: #ffffff;
+    border-top: 2px solid #a855f7;
+}
+
+body.light #player-title {
+    color: #121212;
+}
+
+body.light .player-controls button {
+    color: #121212;
+}
+
+body.light .header-right input {
+    background-color: #f0f0f0;
+    border: 1px solid #dddddd;
+    color: #121212;
+}
+
+body.light #progress {
+    background: #dddddd;
+}
+
+body.light #volume {
+    background: #dddddd;
+}
+
+body.light #current-time {
+    color: #555555;
+}
+
+/* Кнопка теми */
+#theme-btn {
+    background: none;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #ffffff;
+    transition: border-color 0.2s;
+}
+
+#theme-btn:hover {
+    border-color: #a855f7;
+}
+
+body.light #theme-btn {
+    border: 1px solid #dddddd;
+    color: #121212;
+}
