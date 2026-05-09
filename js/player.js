@@ -199,6 +199,28 @@ audio.addEventListener('ended', () => {
         nextTrack();
     }
 });
+
+function loadReleases() {
+    const grid = document.getElementById('releases-grid');
+    if (!grid) return;
+
+    tracks.forEach((track, index) => {
+        const div = document.createElement('div');
+        div.className = 'release-card';
+        div.onclick = () => playTrack(index);
+        div.innerHTML = `
+            <div class="release-cover" style="background-image: url('${track.cover}')"></div>
+            <div class="release-info">
+                <h4>${track.title}</h4>
+                <p>${track.artist}</p>
+            </div>
+        `;
+        grid.appendChild(div);
+    });
+}
+
+loadReleases();
+
 // Запуск
 showUsername();
 loadTracks();   

@@ -381,3 +381,52 @@ body.light #theme-btn {
     border: 1px solid #dddddd;
     color: #121212;
 }
+
+.new-releases {
+    padding: 40px;
+}
+
+.new-releases h2 {
+    margin-bottom: 20px;
+}
+
+.releases-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.release-card {
+    background-color: #1e1e2e;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.release-card:hover {
+    transform: scale(1.02);
+}
+
+.release-cover {
+    width: 100%;
+    height: 180px;
+    background-color: #2a2a3e;
+    background-size: cover;
+    background-position: center;
+}
+
+.release-info {
+    padding: 12px;
+}
+
+.release-info h4 {
+    margin: 0;
+    font-size: 15px;
+}
+
+.release-info p {
+    margin: 4px 0 0;
+    font-size: 13px;
+    color: #aaaaaa;
+}
