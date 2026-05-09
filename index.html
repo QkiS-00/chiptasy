@@ -50,6 +50,9 @@
     <button onclick="togglePlay()">▶</button>
     <button onclick="nextTrack()">▶|</button>
     <button id="shuffle-btn" onclick="toggleShuffle()" title="Перемішати">⇄</button>
+    <button id="repeat-btn" onclick="toggleRepeat()" title="Повторити">↩</button>
+    🔊
+    <input type="range" id="volume" min="0" max="100" value="100" oninput="setVolume()">
 </div>
         <audio id="audio"></audio>
         <div class="player-progress">

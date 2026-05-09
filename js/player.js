@@ -118,6 +118,26 @@ function toggleShuffle() {
         btn.title = 'Перемішати';
     }
 }
+// Режим повторення
+let isRepeat = false;
+
+function toggleRepeat() {
+    isRepeat = !isRepeat;
+    const btn = document.getElementById('repeat-btn');
+    if (isRepeat) {
+        btn.style.color = '#a855f7';
+        btn.title = 'Повторення увімкнено';
+    } else {
+        btn.style.color = '#ffffff';
+        btn.title = 'Повторити';
+    }
+}
+
+// Гучність
+function setVolume() {
+    const volume = document.getElementById('volume').value;
+    audio.volume = volume / 100;
+}
 
 // Прогрес бар
 audio.addEventListener('timeupdate', () => {
@@ -172,8 +192,13 @@ function logout() {
 }
 
 // Автоматично наступний трек
-audio.addEventListener('ended', nextTrack);
-
+audio.addEventListener('ended', () => {
+    if (isRepeat) {
+        audio.play();
+    } else {
+        nextTrack();
+    }
+});
 // Запуск
 showUsername();
 loadTracks();   

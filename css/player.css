@@ -93,3 +93,24 @@
     border: none;
     box-shadow: 0 0 6px rgba(168, 85, 247, 0.8);
 }
+/* Регулятор гучності */
+#volume {
+    width: 80px;
+    height: 4px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: #2a2a3e;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+}
+
+#volume::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #a855f7;
+    cursor: pointer;
+}
