@@ -214,7 +214,7 @@ function loadReleases() {
         div.innerHTML = `
             <div class="release-cover" style="background-image: url('${track.cover}')">
                 <div class="release-overlay">
-                    <button class="release-play" onclick="event.stopPropagation(); playTrack(${index})">▶</button>
+                    <button class="release-play" id="release-play-${index}" onclick="event.stopPropagation(); toggleReleasePlay(${index})">▶</button>
                     <button class="release-like ${isLiked ? 'liked' : ''}" onclick="event.stopPropagation(); toggleLikeRelease(${index})">
                         ${isLiked ? '💜' : '🤍'}
                     </button>
@@ -243,6 +243,18 @@ function toggleLikeRelease(index) {
 
     localStorage.setItem('favorites', JSON.stringify(favorites));
     loadReleases();
+}
+
+function toggleReleasePlay(index) {
+    if (currentIndex === index && isPlaying) {
+        audio.pause();
+        isPlaying = false;
+        document.getElementById('release-play-' + index).textContent = '▶';
+        document.querySelector('.player-controls button:nth-child(2)').textContent = '▶';
+    } else {
+        playTrack(index);
+        document.getElementById('release-play-' + index).textContent = '⏸';
+    }
 }
 
 loadReleases();
