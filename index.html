@@ -35,7 +35,8 @@
 
 
     <main class="main">
-        <h2>ТОП-5 місяця 🎵</h2>
+        >
+<h2>ТОП-5 місяця 🎵</h2>
         <div id="track-list" class="track-list"></div>
     </main>
 
@@ -45,10 +46,11 @@
             <span id="player-title">Оберіть трек</span>
         </div>
         <div class="player-controls">
-            <button onclick="prevTrack()">⏮</button>
-            <button onclick="togglePlay()">▶</button>
-            <button onclick="nextTrack()">⏭</button>
-        </div>
+    <button onclick="prevTrack()">|◀</button>
+    <button onclick="togglePlay()">▶</button>
+    <button onclick="nextTrack()">▶|</button>
+    <button id="shuffle-btn" onclick="toggleShuffle()" title="Перемішати">⇄</button>
+</div>
         <audio id="audio"></audio>
         <div class="player-progress">
             <span id="current-time">0:00</span>
