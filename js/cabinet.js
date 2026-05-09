@@ -31,6 +31,9 @@ beats.forEach(beat => {
 
 document.querySelector('.btn-add').addEventListener('click', () => {
   alert('Функція додавання треку буде додана пізніше');
+});
+
+document.querySelector('.btn-back').addEventListener('click', () => {
   const backPage = localStorage.getItem('backPage') || 'index.html';
   window.location.href = backPage;
 });
