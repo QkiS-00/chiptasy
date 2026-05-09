@@ -22,6 +22,14 @@ function loadTrackInfo() {
 
     document.title = `Chiptasy — ${track.title}`;
 
+    const audio = document.getElementById('audio');
+    audio.src = track.src;
+    audio.addEventListener('loadedmetadata', () => {
+        const min = Math.floor(audio.duration / 60);
+        const sec = Math.floor(audio.duration % 60).toString().padStart(2, '0');
+        document.getElementById('track-duration').textContent = `${min}:${sec}`;
+    });
+
     const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
     const isLiked = favorites.some(f => f.title === track.title);
     const likeBtn = document.getElementById('like-btn');
