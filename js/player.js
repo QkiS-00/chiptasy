@@ -7,17 +7,17 @@ const tracks = [
         cover: 'img/cover1.jpg'
     },
     {
-        title: 'Трек 2',
-        artist: 'Виконавець 2',
+        title: 'Чужая невеста',
+        artist: 'Opium',
         src: 'audio/track2.mp3',
         genre: 'Pop',
         cover: 'img/cover2.jpg'
     },
     {
-        title: 'Трек 3',
-        artist: 'Виконавець 3',
+        title: 'Калым',
+        artist: 'Мурат Тхагалегов',
         src: 'audio/track3.mp3',
-        genre: 'Rock',
+        genre: 'Pop',
         cover: 'img/cover3.jpg'
     }
 ];
