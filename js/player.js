@@ -1,7 +1,7 @@
 const tracks = [
     {
-        title: 'Трек 1',
-        artist: 'Виконавець 1',
+        title: 'Чёрные глаза',
+        artist: 'Opium',
         src: 'audio/track1.mp3',
         genre: 'Hip-Hop',
         cover: 'img/cover1.jpg'
