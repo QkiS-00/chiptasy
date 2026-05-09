@@ -18,7 +18,7 @@
         <div class="header-right">
     <button id="theme-btn" onclick="toggleTheme()" title="Змінити тему">🌙</button>
     <input type="text" id="searchInput" placeholder="Пошук треків..." oninput="search()">
-    <a href="cabinet.html" id="username-display" style="color:#a855f7; text-decoration:none;"></a>
+    <a href="cabinet.html" id="username-display" style="color:#a855f7; text-decoration:none;" onclick="localStorage.setItem('backPage', 'index.html')"></a>
     <button onclick="logout()">Вийти</button>
 </div>
     </header>
