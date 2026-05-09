@@ -430,3 +430,46 @@ body.light #theme-btn {
     font-size: 13px;
     color: #aaaaaa;
 }
+
+.release-cover {
+    position: relative;
+}
+
+.release-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.release-card:hover .release-overlay {
+    opacity: 1;
+}
+
+.release-play, .release-like, .release-share {
+    background: rgba(168, 85, 247, 0.8);
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    font-size: 16px;
+    cursor: pointer;
+    color: white;
+    transition: transform 0.2s;
+}
+
+.release-play:hover, .release-like:hover, .release-share:hover {
+    transform: scale(1.15);
+}
+
+.release-like.liked {
+    background: rgba(168, 85, 247, 1);
+}

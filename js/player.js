@@ -203,13 +203,24 @@ audio.addEventListener('ended', () => {
 function loadReleases() {
     const grid = document.getElementById('releases-grid');
     if (!grid) return;
+    grid.innerHTML = '';
 
     tracks.forEach((track, index) => {
+        const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+        const isLiked = favorites.some(f => f.title === track.title);
+
         const div = document.createElement('div');
         div.className = 'release-card';
-        div.onclick = () => playTrack(index);
         div.innerHTML = `
-            <div class="release-cover" style="background-image: url('${track.cover}')"></div>
+            <div class="release-cover" style="background-image: url('${track.cover}')">
+                <div class="release-overlay">
+                    <button class="release-play" onclick="event.stopPropagation(); playTrack(${index})">▶</button>
+                    <button class="release-like ${isLiked ? 'liked' : ''}" onclick="event.stopPropagation(); toggleLikeRelease(${index})">
+                        ${isLiked ? '💜' : '🤍'}
+                    </button>
+                    <button class="release-share" onclick="event.stopPropagation(); navigator.clipboard.writeText(window.location.origin + '/track.html?id=${index}'); alert('Посилання скопійовано!')">🔗</button>
+                </div>
+            </div>
             <div class="release-info">
                 <h4>${track.title}</h4>
                 <p>${track.artist}</p>
@@ -217,6 +228,21 @@ function loadReleases() {
         `;
         grid.appendChild(div);
     });
+}
+
+function toggleLikeRelease(index) {
+    const track = tracks[index];
+    let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+    const exists = favorites.some(f => f.title === track.title);
+
+    if (exists) {
+        favorites = favorites.filter(f => f.title !== track.title);
+    } else {
+        favorites.push(track);
+    }
+
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+    loadReleases();
 }
 
 loadReleases();
