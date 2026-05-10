@@ -473,3 +473,164 @@ body.light #theme-btn {
 .release-like.liked {
     background: rgba(168, 85, 247, 1);
 }
+/* Вкладки */
+.tabs {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.tab {
+    padding: 10px 24px;
+    background-color: #1a1a2e;
+    color: #aaaaaa;
+    border: 1px solid #2a2a3e;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: all 0.2s;
+}
+
+.tab.active {
+    background-color: #a855f7;
+    color: #ffffff;
+    border-color: #a855f7;
+}
+
+.tab:hover {
+    border-color: #a855f7;
+    color: #ffffff;
+}
+
+/* Створити плейлист */
+.create-playlist {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+    max-width: 500px;
+}
+
+.create-playlist input {
+    flex: 1;
+    padding: 10px 14px;
+    background-color: #1a1a2e;
+    border: 1px solid #2a2a3e;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 14px;
+    outline: none;
+}
+
+.create-playlist input:focus {
+    border-color: #a855f7;
+}
+
+.create-playlist button {
+    padding: 10px 20px;
+    background-color: #a855f7;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.create-playlist button:hover {
+    background-color: #9333ea;
+}
+
+/* Плейлист */
+.playlist-item {
+    background-color: #1a1a2e;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #2a2a3e;
+    overflow: hidden;
+    max-width: 900px;
+}
+
+.playlist-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.playlist-header:hover {
+    background-color: #2a2a3e;
+}
+
+.playlist-name {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.playlist-count {
+    font-size: 13px;
+    color: #aaaaaa;
+    margin-top: 4px;
+}
+
+.playlist-actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 4px;
+}
+
+.playlist-tracks {
+    padding: 0 20px 16px;
+    border-top: 1px solid #2a2a3e;
+}
+
+.playlist-track-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #2a2a3e;
+    font-size: 14px;
+}
+
+.playlist-track-item button {
+    background: none;
+    border: none;
+    color: #aaaaaa;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.playlist-track-item button:hover {
+    color: #f87171;
+}
+
+.empty-playlist {
+    color: #aaaaaa;
+    font-size: 14px;
+    padding: 12px 0;
+}
+
+/* Додати в плейлист */
+.playlist-select {
+    padding: 6px 10px;
+    background-color: #2a2a3e;
+    border: 1px solid #333;
+    border-radius: 6px;
+    color: #ffffff;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.btn-add-to-playlist {
+    padding: 6px 10px;
+    background-color: #a855f7;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+}

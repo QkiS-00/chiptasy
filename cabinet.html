@@ -4,43 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chiptasy — Кабінет</title>
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/cabinet.css">
 </head>
 <body>
 
+    <!-- Шапка -->
+    <header class="header">
+        <div class="logo">🎵 Chiptasy</div>
+        <nav>
+            <a href="index.html">Головна</a>
+            <a href="favorites.html">Обране</a>
+            <a href="cabinet.html">Кабінет</a>
+        </nav>
+        <div class="header-right">
+            <span id="username-display"></span>
+            <button onclick="logout()">Вийти</button>
+        </div>
+    </header>
+
     <div class="cabinet-container">
 
+        <!-- Сайдбар -->
         <div class="sidebar">
-            <button class="btn-back" onclick="window.location.href='index.html'">← Назад</button>
-            <button class="btn-add">Додати трек +</button>
+            <button class="btn-add" onclick="showAddTrack()">Додати трек +</button>
             <button class="btn-settings" onclick="window.location.href='settings.html'">⚙ Налаштування</button>
         </div>
 
-        <div class="main">
+        <!-- Основний контент -->
+        <div class="cabinet-main">
 
-            <div class="profile">
-                <div class="profile-photo">ФОТО</div>
-                <div class="profile-info">
-                    <h2 id="profile-name">Нікнейм</h2>
-                    <p>годі сидіти треба робити</p>
+            <!-- Профіль -->
+            <div class="profile-banner">
+                <div class="profile-left">
+                    <div class="profile-photo" id="profile-photo">ФОТО</div>
+                    <div class="profile-info">
+                        <h2 id="profile-name">Нікнейм</h2>
+                        <p>годі сидіти треба робити</p>
+                    </div>
+                </div>
+                <img src="img/cabinet-char.png" class="profile-char" 
+                     onerror="this.style.display='none'">
+            </div>
+
+            <!-- Статистика -->
+            <h3 class="section-title">Статистика</h3>
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-icon">💜</div>
+                    <div>
+                        <span id="stat-saves">0</span>
+                        <p>Зберігань</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">👁</div>
+                    <div>
+                        <span id="stat-plays">0</span>
+                        <p>Прослуховувань</p>
+                    </div>
                 </div>
             </div>
 
-            <h3>Статистика</h3>
-            <div class="stats">
-                <div class="stat-card">📊 <span>6000 грн</span><p>Дохід</p></div>
-                <div class="stat-card">✅ <span>64%</span><p>Продажі</p></div>
-                <div class="stat-card">🤍 <span>101</span><p>Зберігань</p></div>
-                <div class="stat-card">👁 <span>80%</span><p>Прослуховувань</p></div>
-            </div>
-
-            <h3>Ваші біти</h3>
-            <div class="beats-grid" id="beats-grid"></div>
+            <!-- Ваше збереження (плейлисти/обране) -->
+            <h3 class="section-title">Ваше збереження</h3>
+            <div id="saved-tracks" class="saved-list"></div>
 
         </div>
-
     </div>
 
+    <script src="js/auth.js"></script>
     <script src="js/cabinet.js"></script>
 </body>
 </html>

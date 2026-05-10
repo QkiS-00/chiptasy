@@ -1,39 +1,79 @@
-const user = JSON.parse(localStorage.getItem('user'));
-
+// Перевірка користувача
+const user = JSON.parse(localStorage.getItem('currentUser') || 'null');
 if (!user) {
-  window.location.href = 'login.html';
+    window.location.href = 'login.html';
 }
 
-document.getElementById('profile-name').textContent = user.username;
+// Показуємо нікнейм
+document.getElementById('profile-name').textContent = `Привіт, "${user.username}"`;
+document.getElementById('username-display') &&
+    (document.getElementById('username-display').textContent = `👤 ${user.username}`);
 
-const beats = [
-  { name: 'Назва', genre: 'Жанр', price: '500грн' },
-  { name: 'Назва', genre: 'Жанр', price: '500грн' },
-  { name: 'Назва', genre: 'Жанр', price: '500грн' },
-  { name: 'Назва', genre: 'Жанр', price: '500грн' },
-  { name: 'Назва', genre: 'Жанр', price: '500грн' },
-  { name: 'Назва', genre: 'Жанр', price: '500грн' },
-];
+// Фото профілю
+const savedPhoto = localStorage.getItem('profilePhoto');
+if (savedPhoto) {
+    const photo = document.getElementById('profile-photo');
+    photo.style.backgroundImage = `url('${savedPhoto}')`;
+    photo.textContent = '';
+}
 
-const grid = document.getElementById('beats-grid');
+// Статистика — рахуємо з localStorage
+const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+const playlists = JSON.parse(localStorage.getItem('playlists') || '[]');
 
-beats.forEach(beat => {
-  grid.innerHTML += `
-    <div class="beat-card">
-      <div class="beat-info">
-        <h4>${beat.name}</h4>
-        <p>${beat.genre}</p>
-        <p class="price">${beat.price}</p>
-      </div>
-    </div>
-  `;
-});
+document.getElementById('stat-saves').textContent = favorites.length;
+document.getElementById('stat-plays').textContent =
+    parseInt(localStorage.getItem('totalPlays') || '0');
 
-document.querySelector('.btn-add').addEventListener('click', () => {
-  alert('Функція додавання треку буде додана пізніше');
-});
+// Збереження — показуємо лайкнуті треки
+function loadSaved() {
+    const savedList = document.getElementById('saved-tracks');
+    const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
 
-document.querySelector('.btn-back').addEventListener('click', () => {
-  const backPage = localStorage.getItem('backPage') || 'index.html';
-  window.location.href = backPage;
-});
+    if (favorites.length === 0) {
+        savedList.innerHTML = `<p class="saved-empty">😔 Немає збережених треків — 
+            <a href="index.html" style="color:#a855f7">перейти до треків</a></p>`;
+        return;
+    }
+
+    savedList.innerHTML = '';
+    favorites.forEach((track, index) => {
+        const div = document.createElement('div');
+        div.className = 'saved-track-item';
+        div.innerHTML = `
+            <div>
+                <div class="saved-track-name">🎵 ${track.title}</div>
+                <div class="saved-track-artist">${track.artist}</div>
+            </div>
+            <button onclick="removeSaved('${track.title}')" 
+                    style="background:none;border:none;color:#aaaaaa;cursor:pointer;font-size:18px">
+                💜
+            </button>
+        `;
+        savedList.appendChild(div);
+    });
+}
+
+// Видалити зі збереженого
+function removeSaved(title) {
+    let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+    favorites = favorites.filter(f => f.title !== title);
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+    loadSaved();
+
+    // Оновлюємо статистику
+    document.getElementById('stat-saves').textContent = favorites.length;
+}
+
+// Додати трек
+function showAddTrack() {
+    alert('Функція додавання треку буде додана пізніше');
+}
+
+// Вихід
+function logout() {
+    localStorage.removeItem('currentUser');
+    window.location.href = 'login.html';
+}
+
+loadSaved();

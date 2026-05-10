@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="css/player.css">
 </head>
 <body>
-<body>
+
+    <!-- Шапка -->
     <header class="header">
         <div class="logo">🎵 Chiptasy</div>
         <nav>
@@ -16,31 +17,48 @@
             <a href="favorites.html">Обране</a>
         </nav>
         <div class="header-right">
-            <a href="cabinet.html" id="username-display" style="color:#a855f7; text-decoration:none;" onclick="localStorage.setItem('backPage', 'favorites.html')"></a>
+            <span id="username-display"></span>
             <button onclick="logout()">Вийти</button>
         </div>
     </header>
 
-    <section class="favorites-hero">
-        <div>
-            <h1>❤️ Моє обране</h1>
-            <p>Тут зберігаються твої улюблені треки</p>
-        </div>
-    </section>
-
     <main class="main">
-        <div id="favorites-list" class="track-list"></div>
+
+        <!-- Вкладки -->
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab('liked')">❤️ Вподобані</button>
+            <button class="tab" onclick="switchTab('playlists')">📂 Плейлисти</button>
+        </div>
+
+        <!-- Вподобані треки -->
+        <div id="tab-liked">
+            <div id="favorites-list" class="track-list"></div>
+        </div>
+
+        <!-- Плейлисти -->
+        <div id="tab-playlists" style="display:none">
+
+            <!-- Створити плейлист -->
+            <div class="create-playlist">
+                <input type="text" id="playlist-name" placeholder="Назва плейлиста...">
+                <button onclick="createPlaylist()">+ Створити</button>
+            </div>
+
+            <!-- Список плейлистів -->
+            <div id="playlists-list"></div>
+        </div>
+
     </main>
 
-
-    <div class="player" id="player">
+    <!-- Плеєр -->
+    <div class="player">
         <div class="player-info">
             <span id="player-title">Оберіть трек</span>
         </div>
         <div class="player-controls">
-            <button onclick="prevTrack()">⏮</button>
+            <button onclick="prevTrack()">|◀</button>
             <button onclick="togglePlay()">▶</button>
-            <button onclick="nextTrack()">⏭</button>
+            <button onclick="nextTrack()">▶|</button>
         </div>
         <audio id="audio"></audio>
         <div class="player-progress">
