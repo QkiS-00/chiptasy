@@ -1,72 +1,118 @@
-const user = JSON.parse(localStorage.getItem('user'));
+let currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+if (!currentUser) {
+    window.location.href = 'login.html';
+}
+if (!currentUser) {
+    window.location.href = 'login.html';
+}
 
-if (!user) {
-  window.location.href = 'login.html';
+function showUsername() {
+    const display = document.getElementById('username-display');
+    if (display) display.textContent = `👤 ${currentUser.username}`;
+}
+
+function logout() {
+    localStorage.removeItem('currentUser');
+    window.location.href = 'login.html';
+}
+
+function loadPhoto() {
+    const savedPhoto = localStorage.getItem('profilePhoto');
+    if (savedPhoto) {
+        const preview = document.getElementById('photo-preview');
+        if (preview) {
+            preview.style.backgroundImage = `url(${savedPhoto})`;
+            preview.style.backgroundSize = 'cover';
+            preview.style.backgroundPosition = 'center';
+        }
+    }
+}
+
+function loadUserData() {
+    document.getElementById('fullname').value = currentUser.username || '';
+    document.getElementById('email').value = currentUser.email || '';
 }
 
 function uploadPhoto(event) {
-  const file = event.target.files[0];
-  if (!file) return;
+    const file = event.target.files[0];
+    if (!file) return;
 
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    const photoData = e.target.result;
-    localStorage.setItem('userPhoto', photoData);
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const photoData = e.target.result;
 
-    document.getElementById('photo-preview').style.backgroundImage = `url(${photoData})`;
-    document.getElementById('photo-preview').style.backgroundSize = 'cover';
-    document.getElementById('photo-preview-2').style.backgroundImage = `url(${photoData})`;
-    document.getElementById('photo-preview-2').style.backgroundSize = 'cover';
-  };
-  reader.readAsDataURL(file);
-}
+      
+        localStorage.setItem('profilePhoto', photoData);
 
-const savedPhoto = localStorage.getItem('userPhoto');
-if (savedPhoto) {
-  document.getElementById('photo-preview').style.backgroundImage = `url(${savedPhoto})`;
-  document.getElementById('photo-preview').style.backgroundSize = 'cover';
-  document.getElementById('photo-preview-2').style.backgroundImage = `url(${savedPhoto})`;
-  document.getElementById('photo-preview-2').style.backgroundSize = 'cover';
-}
+        const preview = document.getElementById('photo-preview');
+        if (preview) {
+            preview.style.backgroundImage = `url(${photoData})`;
+            preview.style.backgroundSize = 'cover';
+            preview.style.backgroundPosition = 'center';
+        }
 
-document.getElementById('fullname').value = user.username || '';
-document.getElementById('email').value = user.email || '';
-
-function checkPassword() {
-  const currentPassword = document.getElementById('current-password').value;
-  const settingsMsg = document.getElementById('settings-msg');
-
-  if (currentPassword !== user.password) {
-    settingsMsg.style.color = '#f87171';
-    settingsMsg.textContent = 'Невірний поточний пароль';
-    return false;
-  }
-
-  return true;
+        const msg = document.getElementById('settings-msg');
+        msg.style.color = '#4ade80';
+        msg.textContent = '✅ Фото успішно оновлено!';
+    };
+    reader.readAsDataURL(file);
 }
 
 function saveSettings() {
-  const settingsMsg = document.getElementById('settings-msg');
-  const newPassword = document.getElementById('new-password').value;
-  const repeatPassword = document.getElementById('repeat-password').value;
+    const settingsMsg = document.getElementById('settings-msg');
+    const fullname = document.getElementById('fullname').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const currentPassword = document.getElementById('current-password').value;
+    const newPassword = document.getElementById('new-password').value;
+    const repeatPassword = document.getElementById('repeat-password').value;
 
-  if (!checkPassword()) return;
+    if (currentPassword || newPassword || repeatPassword) {
 
-  if (newPassword && newPassword !== repeatPassword) {
-    settingsMsg.style.color = '#f87171';
-    settingsMsg.textContent = 'Нові паролі не збігаються';
-    return;
-  }
+        if (currentPassword !== currentUser.password) {
+            settingsMsg.style.color = '#f87171';
+            settingsMsg.textContent = '❌ Невірний поточний пароль!';
+            return;
+        }
 
-  user.username = document.getElementById('fullname').value;
-  user.email = document.getElementById('email').value;
+        if (!newPassword) {
+            settingsMsg.style.color = '#f87171';
+            settingsMsg.textContent = '❌ Введіть новий пароль!';
+            return;
+        }
 
-  if (newPassword) {
-    user.password = newPassword;
-  }
+        if (newPassword.length < 6) {
+            settingsMsg.style.color = '#f87171';
+            settingsMsg.textContent = '❌ Пароль має бути мінімум 6 символів!';
+            return;
+        }
 
-  localStorage.setItem('user', JSON.stringify(user));
+        if (newPassword !== repeatPassword) {
+            settingsMsg.style.color = '#f87171';
+            settingsMsg.textContent = '❌ Нові паролі не збігаються!';
+            return;
+        }
 
-  settingsMsg.style.color = '#4ade80';
-  settingsMsg.textContent = 'Дані успішно оновлено!';
+        currentUser.password = newPassword;
+
+        document.getElementById('current-password').value = '';
+        document.getElementById('new-password').value = '';
+        document.getElementById('repeat-password').value = '';
+    }
+
+    if (fullname) currentUser.username = fullname;
+    if (email) currentUser.email = email;
+
+    localStorage.setItem('currentUser', JSON.stringify(user));
+    localStorage.setItem('user', JSON.stringify(user));
+
+    settingsMsg.style.color = '#4ade80';
+    settingsMsg.textContent = '✅ Дані успішно оновлено!';
+
+    setTimeout(() => {
+        settingsMsg.textContent = '';
+    }, 3000);
 }
+
+showUsername();
+loadPhoto();
+loadUserData();

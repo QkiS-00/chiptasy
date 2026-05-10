@@ -65,12 +65,12 @@ function removeSaved(title) {
     document.getElementById('stat-saves').textContent = favorites.length;
 }
 
-// Додати трек
+
 function showAddTrack() {
     alert('Функція додавання треку буде додана пізніше');
 }
 
-// Вихід
+
 function logout() {
     localStorage.removeItem('currentUser');
     window.location.href = 'login.html';
