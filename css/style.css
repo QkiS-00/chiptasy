@@ -634,3 +634,63 @@ body.light #theme-btn {
     cursor: pointer;
     font-size: 13px;
 }
+/* Футер */
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 32px 40px;
+    background-color: #0f0f1a;
+    border-top: 1px solid #2a2a3e;
+    margin-top: 40px;
+    position: relative;
+}
+
+.footer-logo {
+    height: 40px;
+    margin-bottom: 8px;
+}
+
+.footer-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-left p {
+    color: #a855f7;
+    font-size: 13px;
+    margin: 0;
+}
+
+.footer-links {
+    display: flex;
+    gap: 40px;
+}
+
+.footer-links h4 {
+    color: #ffffff;
+    font-size: 15px;
+    margin: 0 0 12px;
+}
+
+.footer-links a {
+    display: block;
+    color: #aaaaaa;
+    text-decoration: none;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.footer-links a:hover {
+    color: #a855f7;
+}
+
+.footer-right p {
+    color: #aaaaaa;
+    font-size: 12px;
+}
+
+.footer-knight {
+    height: 80px;
+    object-fit: contain;
+}
