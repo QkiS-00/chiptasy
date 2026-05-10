@@ -1,31 +1,35 @@
-// Перевірка користувача
-const user = JSON.parse(localStorage.getItem('currentUser') || 'null');
-if (!user) {
+const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+if (!currentUser) {
     window.location.href = 'login.html';
 }
 
 // Показуємо нікнейм
-document.getElementById('profile-name').textContent = `Привіт, "${user.username}"`;
-document.getElementById('username-display') &&
-    (document.getElementById('username-display').textContent = `👤 ${user.username}`);
+document.getElementById('profile-name').textContent = `Привіт, "${currentUser.username}"`;
+const usernameDisplay = document.getElementById('username-display');
+if (usernameDisplay) {
+    usernameDisplay.textContent = `👤 ${currentUser.username}`;
+}
 
 // Фото профілю
 const savedPhoto = localStorage.getItem('profilePhoto');
+const photo = document.getElementById('profile-photo');
 if (savedPhoto) {
-    const photo = document.getElementById('profile-photo');
     photo.style.backgroundImage = `url('${savedPhoto}')`;
+    photo.style.backgroundSize = 'cover';
+    photo.style.backgroundPosition = 'center';
+    photo.style.backgroundRepeat = 'no-repeat';
     photo.textContent = '';
+} else {
+    photo.textContent = 'ФОТО';
 }
 
-// Статистика — рахуємо з localStorage
+// Статистика
 const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-const playlists = JSON.parse(localStorage.getItem('playlists') || '[]');
-
 document.getElementById('stat-saves').textContent = favorites.length;
 document.getElementById('stat-plays').textContent =
     parseInt(localStorage.getItem('totalPlays') || '0');
 
-// Збереження — показуємо лайкнуті треки
+// Збереження
 function loadSaved() {
     const savedList = document.getElementById('saved-tracks');
     const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
@@ -37,7 +41,7 @@ function loadSaved() {
     }
 
     savedList.innerHTML = '';
-    favorites.forEach((track, index) => {
+    favorites.forEach((track) => {
         const div = document.createElement('div');
         div.className = 'saved-track-item';
         div.innerHTML = `
@@ -45,7 +49,7 @@ function loadSaved() {
                 <div class="saved-track-name">🎵 ${track.title}</div>
                 <div class="saved-track-artist">${track.artist}</div>
             </div>
-            <button onclick="removeSaved('${track.title}')" 
+            <button onclick="removeSaved('${track.title}')"
                     style="background:none;border:none;color:#aaaaaa;cursor:pointer;font-size:18px">
                 💜
             </button>
@@ -60,16 +64,8 @@ function removeSaved(title) {
     favorites = favorites.filter(f => f.title !== title);
     localStorage.setItem('favorites', JSON.stringify(favorites));
     loadSaved();
-
-    // Оновлюємо статистику
     document.getElementById('stat-saves').textContent = favorites.length;
 }
-
-
-function showAddTrack() {
-    alert('Функція додавання треку буде додана пізніше');
-}
-
 
 function logout() {
     localStorage.removeItem('currentUser');

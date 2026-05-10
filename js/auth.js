@@ -64,7 +64,7 @@ function login() {
 }
 
 const user = JSON.parse(localStorage.getItem('user'));
-const usernameDisplay = document.getElementById('username-display');
-if (usernameDisplay && user) {
-  usernameDisplay.textContent = '👤 ' + user.username;
+const cabDisplay = document.getElementById('username-display');
+if (cabDisplay) {
+    cabDisplay.textContent = `👤 ${currentUser.username}`;
 }

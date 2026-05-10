@@ -83,7 +83,9 @@
     color: #aaaaaa;
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
     overflow: hidden;
+    min-width: 80px;
 }
 
 .profile-info h2 {
