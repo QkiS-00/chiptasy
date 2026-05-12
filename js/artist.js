@@ -35,3 +35,35 @@ function logout() {
     localStorage.removeItem('currentUser');
     window.location.href = 'login.html';
 }
+
+const artistTracks = tracks.filter(t => t.artist === artistName);
+
+function loadArtistTracks() {
+    const trackList = document.getElementById('track-list');
+    if (!trackList) return;
+    trackList.innerHTML = '';
+
+    artistTracks.forEach((track, index) => {
+        const realIndex = tracks.indexOf(track);
+        const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+        const isLiked = favorites.some(f => f.title === track.title);
+
+        const div = document.createElement('div');
+        div.className = 'track-item';
+        div.innerHTML = `
+            <div class="track-left" onclick="playTrack(${realIndex})">
+                <div class="track-name">🎵 ${track.title}</div>
+                <div class="track-artist">${track.artist}</div>
+            </div>
+            <div class="track-actions">
+                <button class="like-btn ${isLiked ? 'liked' : ''}"
+                        onclick="event.stopPropagation(); toggleLike(${realIndex})">
+                    ${isLiked ? '💜' : '🤍'}
+                </button>
+            </div>
+        `;
+        trackList.appendChild(div);
+    });
+}
+
+loadArtistTracks();
