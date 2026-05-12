@@ -694,3 +694,41 @@ body.light #theme-btn {
     height: 80px;
     object-fit: contain;
 }
+
+.artist-hero {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    padding: 60px 32px;
+    background: linear-gradient(
+        to right,
+        #0f0f1a 40%,
+        rgba(168, 85, 247, 0.1)
+    );
+    border-bottom: 2px solid #a855f7;
+}
+
+.artist-photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: #2a2a3e;
+    background-size: cover;
+    background-position: center;
+    flex-shrink: 0;
+    border: 3px solid #a855f7;
+}
+
+.artist-info h1 {
+    font-size: 48px;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 16px;
+}
+
+.artist-info p {
+    font-size: 15px;
+    color: #aaaaaa;
+    line-height: 1.7;
+    max-width: 600px;
+}
