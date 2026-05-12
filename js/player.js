@@ -44,7 +44,7 @@ function loadTracks(list = tracks) {
         div.innerHTML = `
             <div class="track-left" onclick="window.location.href='track.html?id=${index}'">
                 <div class="track-name">🎵 ${track.title}</div>
-                <div class="track-artist">${track.artist}</div>
+                <div class="track-artist"><a href="artist.html?name=${track.artist}" style="color:#a855f7; text-decoration:none;">${track.artist}</a></div>
             </div>
             <div class="track-actions">
                 <button class="like-btn ${isLiked ? 'liked' : ''}" 
@@ -223,7 +223,7 @@ function loadReleases() {
             </div>
             <div class="release-info">
                 <h4>${track.title}</h4>
-                <p>${track.artist}</p>
+                <p><a href="artist.html?name=${track.artist}" style="color:#a855f7; text-decoration:none;">${track.artist}</a></p>
             </div>
         `;
         grid.appendChild(div);
