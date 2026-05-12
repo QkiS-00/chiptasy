@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chiptasy — Виконавець</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/player.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">🎵 Chiptasy</div>
+        <nav>
+            <a href="index.html">Головна</a>
+            <a href="favorites.html">Обране</a>
+        </nav>
+        <div class="header-right">
+            <a href="cabinet.html" id="username-display" style="color:#a855f7; text-decoration:none;"></a>
+            <button onclick="logout()">Вийти</button>
+        </div>
+    </header>
+
+    <section class="artist-hero">
+        <div class="artist-photo" id="artist-photo"></div>
+        <div class="artist-info">
+            <h1 id="artist-name"></h1>
+            <p id="artist-bio"></p>
+        </div>
+    </section>
+
+    <main class="main">
+        <h2>Треки виконавця</h2>
+        <div id="track-list" class="track-list"></div>
+    </main>
+
+    <div class="player" id="player">
+        <div class="player-info">
+            <span id="player-title">Оберіть трек</span>
+        </div>
+        <div class="player-controls">
+            <button onclick="prevTrack()">|◀</button>
+            <button onclick="togglePlay()">▶</button>
+            <button onclick="nextTrack()">▶|</button>
+        </div>
+        <audio id="audio"></audio>
+        <div class="player-progress">
+            <span id="current-time">0:00</span>
+            <input type="range" id="progress" value="0" max="100" oninput="setProgress()">
+        </div>
+    </div>
+
+    <script src="js/player.js"></script>
+    <script src="js/artist.js"></script>
+</body>
+</html>
