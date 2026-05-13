@@ -732,3 +732,17 @@ body.light #theme-btn {
     line-height: 1.7;
     max-width: 600px;
 }
+
+.track-play-btn {
+    background: none;
+    border: none;
+    color: #a855f7;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0 10px 0 0;
+    transition: transform 0.2s;
+}
+
+.track-play-btn:hover {
+    transform: scale(1.2);
+}

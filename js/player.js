@@ -42,9 +42,11 @@ function loadTracks(list = tracks) {
         const div = document.createElement('div');
         div.className = 'track-item' + (index === currentIndex ? ' active' : '');
         div.innerHTML = `
-            <div class="track-left" onclick="window.location.href='track.html?id=${index}'">
+            <div class="track-left">
+                <button class="track-play-btn" onclick="event.stopPropagation(); playTrack(${index})">▶</button>
                 <div class="track-name">🎵 ${track.title}</div>
                 <div class="track-artist"><a href="artist.html?name=${track.artist}" style="color:#a855f7; text-decoration:none;">${track.artist}</a></div>
+            </div>
             </div>
             <div class="track-actions">
                 <button class="like-btn ${isLiked ? 'liked' : ''}" 
