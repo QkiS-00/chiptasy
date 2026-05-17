@@ -43,7 +43,9 @@ function loadTracks(list = tracks) {
         div.className = 'track-item' + (index === currentIndex ? ' active' : '');
         div.innerHTML = `
             <div class="track-left">
-                <button class="track-play-btn" onclick="event.stopPropagation(); playTrack(${index})">▶</button>
+                <button class="track-play-btn" id="track-btn-${index}" onclick="event.stopPropagation(); toggleTrackPlay(${index})">
+                    ${currentIndex === index && isPlaying ? '⏸' : '▶'}
+                </button>
                 <div class="track-name">🎵 ${track.title}</div>
                 <div class="track-artist"><a href="artist.html?name=${track.artist}" style="color:#a855f7; text-decoration:none;">${track.artist}</a></div>
             </div>
@@ -256,6 +258,21 @@ function toggleReleasePlay(index) {
     } else {
         playTrack(index);
         document.getElementById('release-play-' + index).textContent = '⏸';
+    }
+}
+
+function toggleTrackPlay(index) {
+    if (currentIndex === index && isPlaying) {
+        audio.pause();
+        isPlaying = false;
+        document.getElementById('track-btn-' + index).textContent = '▶';
+        document.querySelector('.player-controls button:nth-child(2)').textContent = '▶';
+    } else {
+        playTrack(index);
+        document.querySelectorAll('.track-play-btn').forEach((btn, i) => {
+            btn.textContent = '▶';
+        });
+        document.getElementById('track-btn-' + index).textContent = '⏸';
     }
 }
 
