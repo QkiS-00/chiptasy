@@ -45,15 +45,15 @@ function loadTracks(list = tracks) {
             <div class="track-left">
                 <button class="track-play-btn" id="track-btn-${index}" onclick="event.stopPropagation(); toggleTrackPlay(${index})">
                     ${currentIndex === index && isPlaying ? '⏸' : '▶'}
-            </button>
-            <div onclick="window.location.href='track.html?id=${index}'" style="cursor:pointer">
                 </button>
-                <div class="track-name">🎵 ${track.title}</div>
-                <div class="track-artist"><a href="artist.html?name=${track.artist}" style="color:#a855f7; text-decoration:none;">${track.artist}</a></div>
-            </div>
-            </div>
-            <div class="track-artist"><a href="artist.html?name=${track.artist}" style="color:#a855f7; text-decoration:none;">${track.artist}</a></div>
+                <div onclick="window.location.href='track.html?id=${index}'" style="cursor:pointer">
+                    <div class="track-name">🎵 ${track.title}</div>
                 </div>
+            </div>
+            <div class="track-artist">
+                <a href="artist.html?name=${track.artist}" style="color:#a855f7; text-decoration:none;">${track.artist}</a>
+            </div>
+            <div class="track-actions">
                 <button class="like-btn ${isLiked ? 'liked' : ''}" 
                         onclick="event.stopPropagation(); toggleLike(${index})">
                     ${isLiked ? '💜' : '🤍'}
