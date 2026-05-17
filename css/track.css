@@ -123,3 +123,37 @@
     font-size: 14px;
     font-weight: bold;
 }
+
+.track-rating {
+    margin-bottom: 24px;
+}
+
+.rating-label {
+    color: #aaaaaa;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.stars {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.star {
+    font-size: 32px;
+    color: #444;
+    cursor: pointer;
+    transition: color 0.2s, transform 0.2s;
+}
+
+.star:hover {
+    color: #a855f7;
+    transform: scale(1.2);
+}
+
+.rating-avg {
+    color: #aaaaaa;
+    font-size: 14px;
+    margin-top: 4px;
+}
