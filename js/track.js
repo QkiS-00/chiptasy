@@ -71,5 +71,30 @@ function showUsername() {
     }
 }
 
+function setRating(value) {
+    const ratings = JSON.parse(localStorage.getItem('ratings') || '{}');
+    if (!ratings[trackId]) ratings[trackId] = [];
+    ratings[trackId].push(value);
+    localStorage.setItem('ratings', JSON.stringify(ratings));
+    highlightStars(value);
+    showAvgRating();
+}
+
+function highlightStars(value) {
+    const stars = document.querySelectorAll('.star');
+    stars.forEach((star, index) => {
+        star.style.color = index < value ? '#a855f7' : '#444';
+    });
+}
+
+function showAvgRating() {
+    const ratings = JSON.parse(localStorage.getItem('ratings') || '{}');
+    const trackRatings = ratings[trackId];
+    if (!trackRatings || trackRatings.length === 0) return;
+    const avg = (trackRatings.reduce((a, b) => a + b, 0) / trackRatings.length).toFixed(1);
+    document.getElementById('avg-rating').textContent = avg + ' ⭐';
+}
+
+showAvgRating();
 showUsername();
 loadTrackInfo();
